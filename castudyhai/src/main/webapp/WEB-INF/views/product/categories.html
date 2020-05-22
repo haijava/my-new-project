@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/product/layout::headdder">
+    <meta charset="UTF-8">
+    <title>Product</title>
+    <link rel="stylesheet" type="text/css" href="/css/category.css">
+</head>
+<body>
+<div class="super_container text-center">
+    <header class="header">
+        <div class="header_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo"><a href="#">Hitech</a></div>
+                            <nav class="main_nav">
+                                <ul>
+                                    <li class="hassubs active">
+                                        <a href="/">Home</a>
+                                    </li>
+                                    <li class="hassubs">
+                                        <a href="javascript:void(0)">Categories</a>
+                                        <ul>
+                                            <th:block th:each="category1:${categories}">
+                                                <li><a th:href="@{/categories/__${category1.categoryId}__ }"
+                                                       th:text="${category1.name}"></a></li>
+                                            </th:block>
+                                        </ul>
+                                    </li>
+                                    <li><a href="#">Accessories</a></li>
+
+                                    <li><a href="/create-contact">Contact</a></li>
+                                </ul>
+                            </nav>
+                            <div class="header_extra ml-auto">
+                                <div class="shopping_cart">
+                                    <a href="/cart/cart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                             xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                             viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;"
+                                             xml:space="preserve">
+											<g>
+												<path d="M440.1,422.7l-28-315.3c-0.6-7-6.5-12.3-13.4-12.3h-57.6C340.3,42.5,297.3,0,244.5,0s-95.8,42.5-96.6,95.1H90.3
+													c-7,0-12.8,5.3-13.4,12.3l-28,315.3c0,0.4-0.1,0.8-0.1,1.2c0,35.9,32.9,65.1,73.4,65.1h244.6c40.5,0,73.4-29.2,73.4-65.1
+													C440.2,423.5,440.2,423.1,440.1,422.7z M244.5,27c37.9,0,68.8,30.4,69.6,68.1H174.9C175.7,57.4,206.6,27,244.5,27z M366.8,462
+													H122.2c-25.4,0-46-16.8-46.4-37.5l26.8-302.3h45.2v41c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h139.3v41
+													c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
+											</g>
+										</svg>
+                                        <div>Cart <span>(0)</span></div>
+                                    </a>
+                                </div>
+
+                                <!-- Social -->
+                                <div class="header_social">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="home">
+        <div class="home_container">
+            <div class="home_background" style="background-image:url(/images/categories.jpg)"></div>
+            <div class="home_content_container">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="home_content">
+                                <div class="home_title">Smart Phones<span>.</span></div>
+                                <div class="home_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam a ultricies metus. Sed nec molestie eros. Sed viverra velit venenatis fermentum luctus.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        </br>
+        <div class="row justify-content-center clsearch">
+            <div class="col-12 col-md-12 col-lg-12">
+                <form class="card card-sm " th:action="@{/name}" >
+                    <div class="card-body row no-gutters align-items-center">
+                        <div class="col-auto">
+                            <i class="fas fa-search h4 text-body"></i>
+                        </div>
+                        <!--end of col-->
+                        <div class="col fsearch">
+                            <input class="form-control form-control-lg form-control-borderless" type="search" name="s"
+                                   placeholder="Search Name of Product">
+                            <input th:type="hidden" name="id" th:value="${id}">
+                        </div>
+                        <!--end of col-->
+                        <div class="col-auto">
+                            <button class="btn btn-lg btn-success btsearch" type="submit">Search</button>
+                        </div>
+                        <!--end of col-->
+                    </div>
+                </form>
+            </div>
+            <!--end of col-->
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Choose Price:</label>
+            </div>
+            <div class="col-sm-3 pricec">
+                <a th:href="@{/price/price_3milion_6milion/__${id}__}"><p> 3 million- 6 million</p></a>
+            </div>
+            <div class="col-sm-3 pricec ">
+                <a th:href="@{/price/price_6milion_9milion/__${id}__}"><p>6 million- 9 million</p></a>
+            </div>
+            <div class="col-sm-3 pricec">
+                 <a th:href="@{/price/price_9milion_22milion/__${id}__}"><p> 9 million - 22 million</p></a>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row text-center">
+
+            <!-- Product -->
+            <th:block th:each="p : ${products}">
+                <div class="product col-md-4">
+                    <div class="product_image">
+
+                        <div th:switch="${p.status}">
+                            <div class="product_extra product_new" th:case="new">New</div>
+                            <div class="product_extra product_sale" th:case="Sale">Sale</div>
+                        </div>
+                        <a th:href="@{/viewp/__${p.id}__/__${p.price}__}"><img width="220px" height="220px"
+                                                                               class="img-thumbnail"
+                                                                               th:src="@{'/images/' + ${p.image}}"></a>
+                    </div>
+                    <div class="product_content">
+                        <a th:href="@{/viewp/__${p.id}__/__${p.price}__}">
+                            <div class="product_title" th:text="*{p.name}">
+                            </div>
+                        </a>
+                        <div class="product_price" th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0, 'POINT')+' VND'}"><!-- th:text="*{p.price}">--></div>
+                        <div><a th:href="@{/cart/buy/__${p.id}__}">Add to Cart</a></div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+    </div>
+
+</div>
+</body>
+<th:block th:replace="/product/layout::jsfile"></th:block>
+</html>

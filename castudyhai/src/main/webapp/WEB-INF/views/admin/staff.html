@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/admin/layoutadmin::headdder">
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12 d-flex align-items-center">
+                <div class="services-wrap rounded-right w-100">
+                    <h3>Create Products</h3>
+                    <th:block th:if="${message}">
+                        <div class="alert alert-success">
+                            <span th:text="${message}"></span>
+                        </div>
+                    </th:block>
+                    <a href="/admin">Admin list</a>
+                    <form th:action="@{/create-staff}" th:object="${staff}" method="post">
+                        <div class="form-group">
+                            <label> Name:</label>
+                            <input type="text" class="form-control" th:field="*{name}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Email:</label>
+                            <input type="text" class="form-control" th:field="*{email}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone:</label>
+                            <input type="text" class="form-control" th:field="*{phone}"/>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<th:block th:replace="/product/layout::jsfile"></th:block>
+<script>
+    function setImage() {
+        var s = $('.fileDatas').val();
+        var i = s.split('\\').pop().split('/').pop();
+        $('#image').val(i);
+    }
+</script>
+</body>
+
+</html>

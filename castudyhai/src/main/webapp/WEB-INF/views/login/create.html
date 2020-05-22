@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/product/layout::head"></head>
+<body>
+<th:block th:if="${message}">
+    <div class="alert alert-success">
+        <span th:text="${message}"></span>
+    </div>
+</th:block>
+<div class="col-md-8">
+    <form th:action="@{/create-login}" th:object="${login}" method="post">
+            <div class="form-group">
+                <label>UserName:</label>
+                <input type="text" class="form-control" th:field="*{useName}"/>
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="text" class="form-control" th:field="*{email}"/>
+                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</p>
+                <th:block th:if="${messagemail}">
+                    <div class="alert alert-success">
+                        <span th:text="${messagemail}"></span>
+                    </div>
+                </th:block>
+            </div>
+            <div class="form-group">
+                <label>Password:</label>
+                <input type="text" class="form-control" th:field="*{password}"/>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+</div>
+<th:block th:replace="/product/layout::footer"></th:block>
+</body>
+<th:block th:replace="/product/layout::jsfile"></th:block>
+</html>

@@ -1,0 +1,26 @@
+.card-body.row.no-gutters.align-items-center{
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.row.justify-content-center.clsearch {
+    margin-top: 22px;
+}
+
+.home_slider_background {
+    height: 450px;
+}
+
+.header_content.d-flex.flex-row.align-items-center.justify-content-start {
+    background-color: white;
+}
+.rowpro{
+    margin-top: 170px;
+}
+i.fas.fa-search.h4.text-body {
+    margin-right: 16px;
+}
+.btn-success{
+    margin-left: 10px;
+    margin-right: 10px;
+}

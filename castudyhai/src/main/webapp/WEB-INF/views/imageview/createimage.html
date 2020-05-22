@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/product/layout::head">
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12 d-flex align-items-center">
+                <div class="services-wrap rounded-right w-100">
+                    <h3>Create Products</h3>
+                    <th:block th:if="${message}">
+                        <div class="alert alert-success">
+                            <span th:text="${message}"></span>
+                        </div>
+                    </th:block>
+                    <a href="/admin">Admin list</a>
+                    <form th:action="@{/create-imageView}" th:object="${imageView}" enctype="multipart/form-data" method="post">
+
+
+                        <div class="form-group">
+                            <label>Product_id</label>
+                            <select class="form-control" th:field="*{product}">
+                                <th:block th:each="product : ${products}">
+                                    <option th:value="${product.id}" th:text="${product.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="text" th:field="*{imageviews}" class="form-control" hidden="hidden">
+                            <input class="form-control form-control-lg fileDatas" type="file"  th:field="${imageViewUpload.fileDatas}" onchange="setImage();" />
+                        </div>
+
+                        <!-- <div class="form-group">
+                             <label>Status:</label>
+                             <input type="text" class="form-control" th:field="*{status}"/>
+                         </div>-->
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<th:block th:replace="/product/layout::jsfile"></th:block>
+<script>
+    function setImage() {
+        var s = $('.fileDatas').val();
+        var i = s.split('\\').pop().split('/').pop();
+        $('#image').val(i);
+    }
+</script>
+</body>
+
+</html>

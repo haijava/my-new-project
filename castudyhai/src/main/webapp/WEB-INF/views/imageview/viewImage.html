@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/product/layout::headdder">
+    <title>Hitech</title>
+</head>
+<body>
+
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12	featured-top">
+                <div class="services-wrap rounded-right w-100">
+                    <a href="/create-imageview">Create new Image</a>
+                    <a href="/admin">Admin List</a>
+                    <h1>Image </h1>
+                    <div class="table-responsive">
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <tr>
+                            <th>Name</th>
+                            <th>Image</th>
+                        </tr>
+                        <th:block th:each="image : ${imageViews}">
+                            <tr>
+                                <td th:text="${image.product.name}"></td>
+                                <td><img width="220px" height="220px" th:src="'/images/' + ${image.imageviews}"></td>
+                                <!--<td><a th:href="@{/edit-province/__${province.id}__ }">Edit</a></td>
+                                <td><a th:href="@{/delete-province/__${province.id}__ }">Delete</a></td>-->
+                            </tr>
+
+                        </th:block>
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<th:block th:replace="/product/layout::footer"></th:block>
+<th:block th:replace="/product/layout::jsfile"></th:block>
+</body>
+</html>

@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // https://mvnrepository.com/artifact/com.sun.mail/javax.mail
+    compile group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-email
+    compile group: 'org.apache.commons', name: 'commons-email', version: '1.4'
+
+    // https://mvnrepository.com/artifact/javax.mail/mail
+    compile group: 'javax.mail', name: 'mail', version: '1.4.7'
+// https://mvnrepository.com/artifact/org.springframework/spring-context-support
+    compile group: 'org.springframework', name: 'spring-context-support', version: '5.2.5.RELEASE'
+
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+    compile group: 'org.springframework', name: 'spring-core', version: '5.2.1.RELEASE'
+    compile group: 'org.springframework', name: 'spring-context', version: '5.2.1.RELEASE'
+    compile group: 'org.springframework', name: 'spring-beans', version: '5.2.1.RELEASE'
+    compile group: 'org.springframework', name: 'spring-web', version: '5.2.1.RELEASE'
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.9.Final'
+    compile group: 'org.hibernate', name: 'hibernate-entitymanager', version: '5.4.9.Final'
+    compile group: 'org.springframework', name: 'spring-orm', version: '5.2.1.RELEASE'
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '5.2.1.RELEASE'
+    compile group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.0.11.RELEASE'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.18'
+    compile group: 'org.springframework.data', name: 'spring-data-jpa', version: '2.2.2.RELEASE'
+    compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+    // https://mvnrepository.com/artifact/commons-io/commons-io
+    compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    compile group: 'org.springframework', name: 'spring-tx', version: '5.2.3.RELEASE'
+    compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.10.1'
+}

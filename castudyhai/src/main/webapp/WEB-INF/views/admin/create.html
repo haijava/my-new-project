@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/product/layout::headdder">
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12 d-flex align-items-center">
+                <div class="services-wrap rounded-right w-100">
+                    <h3>Create Products</h3>
+                    <th:block th:if="${message}">
+                        <div class="alert alert-success">
+                            <span th:text="${message}"></span>
+                        </div>
+                    </th:block>
+                    <a href="/admin">Admin list</a>
+                    <form th:action="@{/create-product}" th:object="${product}" enctype="multipart/form-data" method="post">
+                        <div class="form-group">
+                            <label>Product Name:</label>
+                            <input type="text" class="form-control" th:field="*{name}"/>
+                        </div>
+                       <!-- <div class="form-group">
+                            <label>Description:</label>
+                            <textarea  class="form-control" th:field="*{description}"/>
+
+                        </div>-->
+                        <div class="form-group ">
+                            <label class="control-label col-md-3 col-sm-3 ">HTMLDescription</label>
+                            <div class="col-md-9 col-sm-9 ">
+                                <textarea type="text" class="form-control" placeholder="Product Line HTMLDescription" th:field="*{description}"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Price:</label>
+                            <input type="text" class="form-control" th:field="*{price}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Price Sale:</label>
+                            <input type="text" class="form-control" th:field="*{priceSale}"/>
+                        </div>
+                        <div class="form-group">
+                            <label>Status:</label>
+                            <select class="form-control" th:field="*{status}">
+                                <th:block th:each="sta : ${statuses}">
+                                    <option th:value="${sta.idStatus}" th:text="${sta.statusName}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select class="form-control" th:field="*{category}">
+                                <th:block th:each="categorys : ${category}">
+                                    <option th:value="${categorys.categoryId}" th:text="${categorys.name}"></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Image</label>
+                            <input type="text" th:field="*{image}" class="form-control" hidden="hidden">
+                            <input class="form-control form-control-lg fileDatas" type="file"  th:field="*{fileDatas}" onchange="setImage();" />
+                        </div>
+
+                       <!-- <div class="form-group">
+                            <label>Status:</label>
+                            <input type="text" class="form-control" th:field="*{status}"/>
+                        </div>-->
+                        <button type="submit" class="btn btn-primary">Create</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<th:block th:replace="/product/layout::jsfile"></th:block>
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-bs4.min.js"></script>
+<script>
+    $('#description').summernote({
+        placeholder: 'Hello Bootstrap 4',
+        tabsize: 2,
+        height: 100
+    });
+    function setImage() {
+        var s = $('.fileDatas').val();
+        var i = s.split('\\').pop().split('/').pop();
+        $('#image').val(i);
+    }
+</script>
+</body>
+
+</html>
